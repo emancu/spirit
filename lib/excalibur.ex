@@ -1,2 +1,0 @@
-defmodule Excalibur do
-end
