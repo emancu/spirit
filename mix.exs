@@ -2,17 +2,19 @@ defmodule Excalibur.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :excalibur,
-     version: "0.0.1",
-     elixir: "~> 0.14.3",
-     deps: deps]
+    [
+      app: :excalibur,
+      version: "0.0.1",
+      elixir: "~> 1.0.4",
+      deps: deps
+    ]
   end
 
   # Configuration for the OTP application
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: []]
+    [applications: [:cowboy, :plug]]
   end
 
   # Dependencies can be hex.pm packages:
@@ -25,6 +27,9 @@ defmodule Excalibur.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:cowboy, "~> 1.0.0"},
+      {:plug, "~> 0.12"}
+    ]
   end
 end
