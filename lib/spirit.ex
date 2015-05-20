@@ -5,6 +5,11 @@ defmodule Spirit do
       use Plug.Router
       use Plug.ErrorHandler
 
+      plug :fetch_query_params
+      plug Plug.Parsers, parsers: [:urlencoded, :json, :multipart],
+        pass:  ["*/*"],
+        json_decoder: Poison
+
       plug :match
       plug :dispatch
 
