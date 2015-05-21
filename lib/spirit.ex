@@ -21,6 +21,31 @@ defmodule Spirit do
         no_halt
       end
 
+      @doc """
+      Redirects the response.
+      ## Arguments
+      * `conn` - `Plug.Conn`
+      * `location` - `String`
+      * `opts` - `Keyword`
+
+      ## Returns
+      `Plug.Conn`
+      """
+      @spec redirect(Plug.Conn.t, binary, Keyword.t) :: Plug.Conn.t
+      def redirect(conn, location, opts \\ [])
+
+      def redirect(%Plug.Conn{state: :sent} = conn, _, _) do
+        conn
+      end
+
+      def redirect(conn, location, opts \\ []) do
+        opts = [status: 302] |> Keyword.merge(opts)
+
+        conn
+        |> put_resp_header("Location", location)
+        |> send_resp(opts[:status], "")
+      end
+
       defp iex_running? do
         Code.ensure_loaded?(IEx) && IEx.started?
       end
