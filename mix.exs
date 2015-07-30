@@ -6,7 +6,9 @@ defmodule Spirit.Mixfile do
       app: :spirit,
       version: "0.0.1",
       elixir: "~> 1.0.4",
-      deps: deps
+      description: "Elixir microframework for web development.",
+      deps: deps,
+      package: package
     ]
   end
 
@@ -29,8 +31,17 @@ defmodule Spirit.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.0"},
-      {:plug, "~> 0.12"},
+      {:plug, "~> 0.13"},
       {:poison, "~> 1.4"}
+    ]
+  end
+
+  defp package do
+    [
+      contributors: ["Emiliano Mancuso"],
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/emancu/spirit"},
+      files: ~w(mix.exs README.md lib test)
     ]
   end
 end
