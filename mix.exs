@@ -1,12 +1,14 @@
-defmodule Excalibur.Mixfile do
+defmodule Spirit.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :excalibur,
+      app: :spirit,
       version: "0.0.1",
       elixir: "~> 1.0.4",
-      deps: deps
+      description: "Elixir microframework for web development.",
+      deps: deps,
+      package: package
     ]
   end
 
@@ -28,8 +30,18 @@ defmodule Excalibur.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:cowboy, "~> 1.0.0"},
-      {:plug, "~> 0.12"}
+      {:cowboy, "~> 1.0"},
+      {:plug, "~> 0.13"},
+      {:poison, "~> 1.4"}
+    ]
+  end
+
+  defp package do
+    [
+      contributors: ["Emiliano Mancuso"],
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/emancu/spirit"},
+      files: ~w(mix.exs README.md lib test)
     ]
   end
 end
